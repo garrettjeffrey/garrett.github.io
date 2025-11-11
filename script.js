@@ -1,19 +1,14 @@
-const button = document.querySelector('#cta-button');
-const yearSpan = document.querySelector('#year');
-
-const toggleButtonText = () => {
-  const defaultText = 'Click me';
-  const activeText = 'Thanks for clicking!';
-
-  if (button.textContent === defaultText) {
-    button.textContent = activeText;
-    button.classList.add('active');
-  } else {
-    button.textContent = defaultText;
-    button.classList.remove('active');
-  }
-};
-
-button?.addEventListener('click', toggleButtonText);
-
-yearSpan.textContent = new Date().getFullYear();
+const toggleBtn = document.getElementById('theme-toggle');
+function setTheme(theme) {
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  toggleBtn.textContent = theme === 'dark' ? '☾' : '☼';
+}
+(function initTheme() {
+  const stored = localStorage.getItem('theme');
+  setTheme(stored || 'dark');
+})();
+toggleBtn.addEventListener('click', () => {
+  setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+document.getElementById('year').textContent = new Date().getFullYear();
