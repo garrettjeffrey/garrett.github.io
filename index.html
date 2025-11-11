@@ -5,88 +5,102 @@
   <title>Garrett Jeffrey — Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Minimal personal site with light/dark toggle." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body data-theme="dark">
   <div class="shell">
-    <header>
-      <div class="id-block">
-        <div class="eyebrow">PERSONAL SITE / SIGNAL NOT NOISE</div>
-        <h1>Garrett Jeffrey</h1>
-        <p class="tagline">
-          Builder, reader, and experimenter exploring AI, clean interfaces,
-          and small tools that actually get used.
-        </p>
+    <header class="hero">
+      <div class="hero-left">
+        <div class="status-chip">Open to new collaborations</div>
+        <div class="id-block">
+          <div class="eyebrow">PERSONAL SITE · SIGNAL NOT NOISE</div>
+          <h1>Garrett Jeffrey</h1>
+          <p class="tagline">
+            Builder, reader, and experimenter exploring AI, clean interfaces,
+            and small tools that actually get used.
+          </p>
+        </div>
       </div>
       <div class="header-right">
-        <nav>
+        <nav class="primary-nav">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
           <a href="#links">Links</a>
         </nav>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">☾</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode" type="button">☾</button>
       </div>
     </header>
 
-    <main>
-      <div>
-        <section id="about">
-          <div class="section-label">About</div>
-          <div class="section-title">A short, honest version.</div>
-          <div class="section-body">
-            I like building focused, minimal products — things you can understand
-            in one glance and start using in one click. I’m currently exploring
-            web apps, mobile apps, and how AI can power useful, lightweight tools.
-          </div>
-        </section>
+    <main class="content-grid">
+      <section id="about" class="card accent-card">
+        <div class="section-label">About</div>
+        <div class="section-title">A short, honest version.</div>
+        <div class="section-body">
+          I like building focused, minimal products — things you can understand
+          in one glance and start using in one click. I’m currently exploring
+          web apps, mobile apps, and how AI can power useful, lightweight tools.
+        </div>
+      </section>
 
-        <section id="projects">
-          <div class="section-label">Projects</div>
-          <div class="section-title">A few things I’m working on.</div>
-          <div class="section-body">
-            <div class="project">
-              <div class="project-title">Milk Bar Finder (PL)</div>
-              <div class="project-tagline">A tiny iOS app to discover Polish milk bars with clean design.</div>
-            </div>
-            <div class="project">
-              <div class="project-title">Daily Space Gallery</div>
-              <div class="project-tagline">Minimal NASA APOD browsing and discovery.</div>
-            </div>
-            <div class="project">
-              <div class="project-title">Cozy Arcade Experiments</div>
-              <div class="project-tagline">Small browser games with soft palettes and flow.</div>
-            </div>
-          </div>
-        </section>
-      </div>
+      <section id="projects" class="card projects-card">
+        <div class="section-label">Projects</div>
+        <div class="section-title">A few things I’m working on.</div>
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-title">Milk Bar Finder (PL)</div>
+            <div class="project-tagline">A tiny iOS app to discover Polish milk bars with clean design.</div>
+            <span class="project-meta">SwiftUI · Maps · Offline-first</span>
+          </article>
+          <article class="project">
+            <div class="project-title">Daily Space Gallery</div>
+            <div class="project-tagline">Minimal NASA APOD browsing and discovery.</div>
+            <span class="project-meta">React · API design · Motion</span>
+          </article>
+          <article class="project">
+            <div class="project-title">Cozy Arcade Experiments</div>
+            <div class="project-tagline">Small browser games with soft palettes and flow.</div>
+            <span class="project-meta">Canvas · Sound design · Playtesting</span>
+          </article>
+        </div>
+      </section>
 
-      <div>
-        <section id="skills">
-          <div class="section-label">Skills</div>
-          <div class="section-title">Tools I’m playing with.</div>
-          <div class="section-body">
-            <div class="pill-row">
-              <div class="pill"><span class="dot"></span>HTML & CSS</div>
-              <div class="pill"><span class="dot"></span>JavaScript / TypeScript</div>
-              <div class="pill"><span class="dot"></span>SwiftUI (iOS)</div>
-              <div class="pill"><span class="dot"></span>Minimal UI / UX</div>
-              <div class="pill"><span class="dot"></span>APIs & automation</div>
-              <div class="pill"><span class="dot"></span>AI-assisted prototyping</div>
-            </div>
+      <section id="skills" class="card">
+        <div class="section-label">Skills</div>
+        <div class="section-title">Tools I’m playing with.</div>
+        <div class="section-body">
+          <div class="pill-row">
+            <div class="pill"><span class="dot"></span>HTML & CSS</div>
+            <div class="pill"><span class="dot"></span>JavaScript / TypeScript</div>
+            <div class="pill"><span class="dot"></span>SwiftUI (iOS)</div>
+            <div class="pill"><span class="dot"></span>Minimal UI / UX</div>
+            <div class="pill"><span class="dot"></span>APIs & automation</div>
+            <div class="pill"><span class="dot"></span>AI-assisted prototyping</div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="links">
-          <div class="section-label">Links</div>
-          <div class="section-title">Elsewhere on the internet.</div>
-          <div class="link-list">
-            <a href="https://github.com/your-username" target="_blank"><span class="label">GitHub</span><span class="url">github.com/your-username</span></a>
-            <a href="https://x.com/your-handle" target="_blank"><span class="label">X</span><span class="url">@your-handle</span></a>
-            <a href="mailto:you@example.com"><span class="label">Email</span><span class="url">you@example.com</span></a>
-          </div>
-        </section>
-      </div>
+      <section id="links" class="card">
+        <div class="section-label">Links</div>
+        <div class="section-title">Elsewhere on the internet.</div>
+        <div class="link-list">
+          <a href="https://github.com/your-username" target="_blank" rel="noopener">
+            <span class="label">GitHub</span>
+            <span class="url">github.com/your-username</span>
+          </a>
+          <a href="https://x.com/your-handle" target="_blank" rel="noopener">
+            <span class="label">X</span>
+            <span class="url">@your-handle</span>
+          </a>
+          <a href="mailto:you@example.com">
+            <span class="label">Email</span>
+            <span class="url">you@example.com</span>
+          </a>
+        </div>
+      </section>
     </main>
 
     <footer>
