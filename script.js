@@ -47,19 +47,57 @@ function setActiveLink(activeId) {
   });
 }
 
+function setInitialActiveLink() {
+  const hashId = window.location.hash.replace('#', '');
+  if (hashId && sections.some((section) => section.id === hashId)) {
+    setActiveLink(hashId);
+    return;
+  }
+
+  const visibleSections = sections
+    .map((section) => ({ id: section.id, rect: section.getBoundingClientRect() }))
+    .filter(({ rect }) => rect.bottom > 0 && rect.top < window.innerHeight)
+    .sort((a, b) => Math.abs(a.rect.top) - Math.abs(b.rect.top));
+
+  if (visibleSections.length) {
+    setActiveLink(visibleSections[0].id);
+    return;
+  }
+
+  if (sections[0]) {
+    setActiveLink(sections[0].id);
+  }
+}
+
 if (sections.length) {
-  const sectionVisibility = new Map(sections.map((section) => [section.id, 0]));
+  setInitialActiveLink();
+
+  const sectionVisibility = new Map(
+    sections.map((section) => [section.id, { ratio: 0, top: Number.POSITIVE_INFINITY }])
+  );
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        sectionVisibility.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
+        sectionVisibility.set(entry.target.id, {
+          ratio: entry.isIntersecting ? entry.intersectionRatio : 0,
+          top: entry.boundingClientRect.top,
+        });
       });
 
-      const visibleSections = Array.from(sectionVisibility.entries()).filter(([, ratio]) => ratio > 0);
+      const visibleSections = Array.from(sectionVisibility.entries()).filter(([, data]) => data.ratio > 0);
       if (!visibleSections.length) return;
 
-      visibleSections.sort((a, b) => b[1] - a[1]);
+      visibleSections.sort((a, b) => {
+        const distanceA = Math.abs(a[1].top);
+        const distanceB = Math.abs(b[1].top);
+
+        if (distanceA === distanceB) {
+          return b[1].ratio - a[1].ratio;
+        }
+
+        return distanceA - distanceB;
+      });
       setActiveLink(visibleSections[0][0]);
     },
     {
