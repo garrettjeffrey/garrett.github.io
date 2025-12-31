@@ -55,20 +55,79 @@ body {
 }
 
 .hero {
+  --hero-grad1-color: rgba(92, 132, 255, 0.16);
+  --hero-grad2-color: rgba(112, 74, 255, 0.18);
+  --hero-grad3-color: rgba(255, 255, 255, 0.06);
+  --hero-grad1-x: 18%;
+  --hero-grad1-y: 20%;
+  --hero-grad2-x: 88%;
+  --hero-grad2-y: 12%;
+  --hero-grad3-x: 50%;
+  --hero-grad3-y: 75%;
+  --hero-motion-x: 0px;
+  --hero-motion-y: 0px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
   padding: clamp(1.5rem, 4vw, 3rem);
   border-radius: calc(var(--radius) + 10px);
-  background: linear-gradient(135deg, rgba(32, 32, 32, 0.95), rgba(19, 19, 19, 0.95));
+  background:
+    radial-gradient(
+        circle at calc(var(--hero-grad1-x) + var(--hero-motion-x))
+          calc(var(--hero-grad1-y) + var(--hero-motion-y)),
+        var(--hero-grad1-color),
+        transparent 60%
+      ),
+    radial-gradient(
+        circle at calc(var(--hero-grad2-x) - var(--hero-motion-x))
+          calc(var(--hero-grad2-y) - var(--hero-motion-y)),
+        var(--hero-grad2-color),
+        transparent 65%
+      ),
+    radial-gradient(
+        circle at calc(var(--hero-grad3-x) + var(--hero-motion-x) * 0.5)
+          calc(var(--hero-grad3-y) - var(--hero-motion-y) * 0.5),
+        var(--hero-grad3-color),
+        transparent 70%
+      ),
+    linear-gradient(135deg, rgba(32, 32, 32, 0.95), rgba(19, 19, 19, 0.95));
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   margin-bottom: clamp(2rem, 5vw, 3.5rem);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    --hero-motion-x: 0px;
+    --hero-motion-y: 0px;
+  }
+}
+
 body[data-theme='light'] .hero {
-  background: linear-gradient(135deg, rgba(87, 77, 255, 0.12), rgba(255, 255, 255, 0.9));
+  --hero-grad1-color: rgba(87, 77, 255, 0.18);
+  --hero-grad2-color: rgba(94, 189, 255, 0.16);
+  --hero-grad3-color: rgba(255, 255, 255, 0.5);
+  background:
+    radial-gradient(
+        circle at calc(var(--hero-grad1-x) + var(--hero-motion-x))
+          calc(var(--hero-grad1-y) + var(--hero-motion-y)),
+        var(--hero-grad1-color),
+        transparent 60%
+      ),
+    radial-gradient(
+        circle at calc(var(--hero-grad2-x) - var(--hero-motion-x))
+          calc(var(--hero-grad2-y) - var(--hero-motion-y)),
+        var(--hero-grad2-color),
+        transparent 65%
+      ),
+    radial-gradient(
+        circle at calc(var(--hero-grad3-x) + var(--hero-motion-x) * 0.5)
+          calc(var(--hero-grad3-y) - var(--hero-motion-y) * 0.5),
+        var(--hero-grad3-color),
+        transparent 70%
+      ),
+    linear-gradient(135deg, rgba(87, 77, 255, 0.12), rgba(255, 255, 255, 0.9));
   border-color: rgba(15, 23, 42, 0.08);
 }
 
