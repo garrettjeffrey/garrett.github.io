@@ -47,6 +47,11 @@ body {
     radial-gradient(circle at 80% 0%, rgba(59, 130, 246, 0.12), transparent 35%);
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .shell {
   max-width: 1080px;
   margin: 0 auto;
@@ -112,12 +117,12 @@ body[data-theme='light'] .status-chip {
 
 .tagline {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.72);
+  color: #e3e8f4;
   margin: 0;
 }
 
 body[data-theme='light'] .tagline {
-  color: rgba(13, 18, 31, 0.85);
+  color: #1f2a3d;
 }
 
 .header-right {
@@ -145,6 +150,8 @@ body[data-theme='light'] .tagline {
 .primary-nav a:focus-visible {
   opacity: 1;
   transform: translateY(-1px);
+  background: var(--accent-soft);
+  border-radius: 999px;
 }
 
 .theme-toggle {
@@ -170,6 +177,7 @@ body[data-theme='dark'] .theme-toggle {
 .theme-toggle:focus-visible {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
 .content-grid {
@@ -216,11 +224,11 @@ section.card {
 }
 
 .section-body {
-  color: rgba(255, 255, 255, 0.82);
+  color: #e8ecf5;
 }
 
 body[data-theme='light'] .section-body {
-  color: rgba(11, 12, 25, 0.75);
+  color: #1f2733;
 }
 
 .project-grid {
@@ -243,9 +251,11 @@ body[data-theme='light'] .project {
 }
 
 .project:hover,
-.project:focus-within {
+.project:focus-within,
+.project:focus-visible {
   transform: translateY(-4px);
   border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
 .project-title {
@@ -277,6 +287,11 @@ body[data-theme='light'] .project {
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 0.9rem;
+}
+
+.pill:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
 body[data-theme='light'] .pill {
@@ -320,6 +335,7 @@ body[data-theme='light'] .link-list a {
 .link-list a:focus-visible {
   border-color: var(--accent);
   transform: translateY(-2px);
+  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
 .label {
